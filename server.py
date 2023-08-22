@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-from dataclass import dataclass
+from dataclasses import dataclass
 
 @dataclass
 class Result:
-    result : int
+    result: int
 
 app = Flask(__name__)
 
@@ -15,13 +15,13 @@ def greeting():
 @app.route("/calculator/add", methods=['POST'])
 def add():
     numbers = request.json
-    response = Result(numbers['first']+numbers['second'])
+    response = Result(numbers['first'] + numbers['second'])
     return jsonify(response)
 
 @app.route("/calculator/subtract", methods=['POST'])
 def subtract():
     numbers = request.json
-    response = Result(numbers['first']-numbers['second'])
+    response = Result(numbers['first'] - numbers['second'])
     return jsonify(response)
 
 if __name__ == '__main__':
